@@ -1,3 +1,7 @@
+import { useState } from "react";
+
+const BOOKING_URL = "https://functions.poehali.dev/7fbdfca6-6a8b-42f6-a9d3-d421f2c93199";
+
 const IMAGES = {
   hero: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/41c1f2e8-4462-464a-896e-99dd30408b44.jpg",
   burger: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/c2d8505a-30b6-4875-aaee-6c5fe9952d9c.jpg",
@@ -10,6 +14,25 @@ const IMAGES = {
 };
 
 export default function Index() {
+  const [form, setForm] = useState({ name: "", phone: "", booking_date: "", booking_time: "", guests_count: "2", comment: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch(BOOKING_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, guests_count: Number(form.guests_count) }),
+      });
+      if (res.ok) setStatus("success");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <>
       <div className="grain-overlay" />
@@ -162,6 +185,70 @@ export default function Index() {
               <img src={IMAGES.gallery4} alt="Десерты" />
             </div>
           </div>
+        </section>
+
+        <section className="section-padding" style={{ borderTop: "var(--border)", background: "var(--dark)" }}>
+          <h2 className="section-title" style={{ color: "white", textAlign: "center", marginBottom: "40px" }}>
+            ЗАБРОНИРОВАТЬ СТОЛ
+          </h2>
+          {status === "success" ? (
+            <div style={{ textAlign: "center", color: "var(--accent)", fontWeight: 800, fontSize: "24px", padding: "40px 0" }}>
+              🎉 Заявка принята! Мы позвоним для подтверждения.
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "16px" }}>
+              <input
+                className="booking-input"
+                placeholder="Ваше имя *"
+                value={form.name}
+                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                required
+              />
+              <input
+                className="booking-input"
+                placeholder="Телефон *"
+                type="tel"
+                value={form.phone}
+                onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                required
+              />
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                <input
+                  className="booking-input"
+                  type="date"
+                  value={form.booking_date}
+                  onChange={e => setForm(f => ({ ...f, booking_date: e.target.value }))}
+                  required
+                />
+                <input
+                  className="booking-input"
+                  type="time"
+                  value={form.booking_time}
+                  onChange={e => setForm(f => ({ ...f, booking_time: e.target.value }))}
+                  required
+                />
+              </div>
+              <select
+                className="booking-input"
+                value={form.guests_count}
+                onChange={e => setForm(f => ({ ...f, guests_count: e.target.value }))}
+              >
+                {[1,2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n} {n === 1 ? "гость" : n < 5 ? "гостя" : "гостей"}</option>)}
+              </select>
+              <textarea
+                className="booking-input"
+                placeholder="Пожелания (необязательно)"
+                rows={3}
+                value={form.comment}
+                onChange={e => setForm(f => ({ ...f, comment: e.target.value }))}
+                style={{ resize: "none" }}
+              />
+              {status === "error" && <p style={{ color: "#ff6b6b", fontWeight: 700 }}>Ошибка. Попробуйте ещё раз.</p>}
+              <button className="btn-cta" type="submit" disabled={status === "loading"} style={{ background: "var(--accent)", color: "var(--dark)", width: "100%" }}>
+                {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+              </button>
+            </form>
+          )}
         </section>
       </main>
 

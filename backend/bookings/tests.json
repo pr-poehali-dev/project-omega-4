@@ -1,0 +1,18 @@
+{
+  "tests": [
+    {
+      "name": "Создание заявки на бронирование",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Петров",
+        "phone": "+79619963779",
+        "booking_date": "2026-05-01",
+        "booking_time": "19:00",
+        "guests_count": 2,
+        "comment": "Хотим у окна"
+      },
+      "expectedStatus": 200
+    }
+  ]
+}
