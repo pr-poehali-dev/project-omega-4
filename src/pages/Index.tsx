@@ -22,7 +22,7 @@ export default function Index() {
           <a href="#">Афиша</a>
           <a href="#">Адрес</a>
         </nav>
-        <button className="btn-cta">Забронировать</button>
+        <a href="tel:+79619963779"><button className="btn-cta">Забронировать</button></a>
       </header>
 
       <main>
@@ -41,9 +41,11 @@ export default function Index() {
               <button className="btn-cta" style={{ background: "var(--primary)", color: "white" }}>
                 Смотреть меню
               </button>
-              <button className="btn-cta" style={{ background: "white" }}>
-                Забронировать стол
-              </button>
+              <a href="tel:+79619963779">
+                <button className="btn-cta" style={{ background: "white" }}>
+                  Забронировать стол
+                </button>
+              </a>
             </div>
           </div>
           <div className="hero-img" style={{ backgroundImage: `url(${IMAGES.hero})` }}>
