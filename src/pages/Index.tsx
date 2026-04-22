@@ -144,7 +144,7 @@ export default function Index() {
 
         <section className="section-padding">
           <h2 className="section-title" style={{ marginBottom: "40px", textAlign: "center" }}>
-            @KASSETA.CAFE
+            @kassetA
           </h2>
           <div className="social-grid">
             <div className="social-item">
@@ -190,9 +190,9 @@ export default function Index() {
         <div className="footer-links">
           <h4>Контакты</h4>
           <ul>
-            <li>@kasseta.cafe</li>
-            <li>+7 (999) 000-00-00</li>
-            <li>ул. Ретро, д. 90</li>
+            <li><a href="https://instagram.com/kassetA" target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "none" }}>@kassetA</a></li>
+            <li><a href="tel:+79619963779" style={{ color: "inherit", textDecoration: "none" }}>+7 (961) 996-37-79</a></li>
+            <li>пр. Строителей, 45, Барнаул</li>
           </ul>
         </div>
       </footer>
