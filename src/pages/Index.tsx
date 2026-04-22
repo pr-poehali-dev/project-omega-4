@@ -1,3 +1,14 @@
+const IMAGES = {
+  hero: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/41c1f2e8-4462-464a-896e-99dd30408b44.jpg",
+  burger: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/c2d8505a-30b6-4875-aaee-6c5fe9952d9c.jpg",
+  milkshake: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/dcd20166-f18b-410e-b3de-1486698194f5.jpg",
+  pizza: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/0a45e518-48f7-497c-9437-2e79b4db635a.jpg",
+  gallery1: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/d4f22881-6b41-415b-ba26-201ed45d713c.jpg",
+  gallery2: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/97145c1a-bed8-4a8d-a64f-776db6540c8e.jpg",
+  gallery3: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/d7d4ca22-58f6-4226-8436-8afb7b434079.jpg",
+  gallery4: "https://cdn.poehali.dev/projects/98d8f3aa-24b2-49dd-98ee-838f3f87bb35/files/9ddc9263-e389-45ec-881b-9f538696b03b.jpg",
+};
+
 export default function Index() {
   return (
     <>
@@ -35,7 +46,7 @@ export default function Index() {
               </button>
             </div>
           </div>
-          <div className="hero-img">
+          <div className="hero-img" style={{ backgroundImage: `url(${IMAGES.hero})` }}>
             <div className="sticker">
               ХИТЫ
               <br />
@@ -70,22 +81,11 @@ export default function Index() {
           </div>
 
           <div className="menu-grid">
-            {/* Item 1 */}
             <div className="menu-card">
               <span className="menu-tag">Хит продаж</span>
-              <img
-                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                alt="Бургер Нирвана"
-              />
+              <img src={IMAGES.burger} alt="Бургер Нирвана" />
               <div className="menu-card-body">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "10px",
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                   <h3>Бургер «Нирвана»</h3>
                   <span className="price">490 ₽</span>
                 </div>
@@ -95,24 +95,13 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Item 2 */}
             <div className="menu-card">
-              <span className="menu-tag" style={{ background: "var(--secondary)" }}>
+              <span className="menu-tag" style={{ background: "var(--secondary)", color: "white" }}>
                 Легенда меню
               </span>
-              <img
-                src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                alt="Коктейль Бумбокс"
-              />
+              <img src={IMAGES.milkshake} alt="Коктейль Бумбокс" />
               <div className="menu-card-body">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "10px",
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                   <h3>Коктейль «Бумбокс»</h3>
                   <span className="price">320 ₽</span>
                 </div>
@@ -120,24 +109,13 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Item 3 */}
             <div className="menu-card">
               <span className="menu-tag" style={{ background: "var(--accent)", color: "var(--dark)" }}>
                 Новинка
               </span>
-              <img
-                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                alt="Пицца Тамагочи"
-              />
+              <img src={IMAGES.pizza} alt="Пицца Тамагочи" />
               <div className="menu-card-body">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "10px",
-                  }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                   <h3>Пицца «Тамагочи»</h3>
                   <span className="price">650 ₽</span>
                 </div>
@@ -170,28 +148,16 @@ export default function Index() {
           </h2>
           <div className="social-grid">
             <div className="social-item">
-              <img
-                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Фото 1"
-              />
+              <img src={IMAGES.gallery1} alt="Атмосфера кафе" />
             </div>
             <div className="social-item">
-              <img
-                src="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Фото 2"
-              />
+              <img src={IMAGES.gallery2} alt="Гости кафе" />
             </div>
             <div className="social-item">
-              <img
-                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Фото 3"
-              />
+              <img src={IMAGES.gallery3} alt="Неоновые вывески" />
             </div>
             <div className="social-item">
-              <img
-                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Фото 4"
-              />
+              <img src={IMAGES.gallery4} alt="Десерты" />
             </div>
           </div>
         </section>
@@ -207,26 +173,10 @@ export default function Index() {
         <div className="footer-links">
           <h4>Навигация</h4>
           <ul>
-            <li>
-              <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-                Меню
-              </a>
-            </li>
-            <li>
-              <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-                О нас
-              </a>
-            </li>
-            <li>
-              <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-                Политика
-              </a>
-            </li>
-            <li>
-              <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
-                Контакты
-              </a>
-            </li>
+            <li><a href="#" style={{ color: "inherit", textDecoration: "none" }}>Меню</a></li>
+            <li><a href="#" style={{ color: "inherit", textDecoration: "none" }}>О нас</a></li>
+            <li><a href="#" style={{ color: "inherit", textDecoration: "none" }}>Политика</a></li>
+            <li><a href="#" style={{ color: "inherit", textDecoration: "none" }}>Контакты</a></li>
           </ul>
         </div>
         <div className="footer-links">
